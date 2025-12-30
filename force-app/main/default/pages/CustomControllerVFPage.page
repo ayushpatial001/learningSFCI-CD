@@ -1,0 +1,9 @@
+<apex:page controller="CustomController" tabStyle="Account">
+    <apex:form >
+        <apex:pageBlock title="Congratulations {!$User.FirstName}">
+            You belong to Account Name: <apex:outputField value="{!Account.name}"/>
+            And The Owner Of this Account is: <apex:outputField value="{!account.Owner.Name}"/>
+            <apex:commandButton action="{!save}" value="save"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

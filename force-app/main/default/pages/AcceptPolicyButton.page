@@ -1,0 +1,15 @@
+<apex:page standardController="Policies_and_Guidelines__c" extensions="MakeRecord" >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+        <h1>
+            Are You Accepting this Policy??
+        </h1>
+    </apex:pageBlockSection>
+    <apex:commandButton action="{!acceptedButton}" value="Accept"/>      
+        </apex:pageBlock>
+        
+    
+    </apex:form>
+    
+</apex:page>

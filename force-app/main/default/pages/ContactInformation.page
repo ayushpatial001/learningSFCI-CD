@@ -1,0 +1,22 @@
+<apex:page standardController="Contact" tabStyle="Contact">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Contact Information">
+                <apex:outputField value="{!Contact.FirstName}"/>
+                <apex:outputField value="{!Contact.LastName}"/>
+                <apex:outputField value="{!Contact.Phone}"/>
+                <apex:outputField value="{!Contact.Email}"/>
+            </apex:pageBlockSection>
+            
+            <div style="text-align: center;">
+                <apex:commandButton action="{!save}" value="Save" oncomplete="window.location.href='/lightning/o/Contact/list';"></apex:commandButton>
+               
+            </div>
+        </apex:pageBlock>
+        
+        
+        
+    </apex:form>
+    
+    
+</apex:page>

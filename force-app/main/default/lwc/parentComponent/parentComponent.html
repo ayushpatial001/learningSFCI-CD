@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Lwc Parent Component">
+        <lightning-input class="slds-p-horizontal_small"
+                         label="Set Counter"
+                         type="number" 
+                         value={valueofInput}
+                         onchange={handleonChange}></lightning-input>
+                         <lightning-button label='Add 10' variant="base"  onclick={onClickHandler}></lightning-button>
+    </lightning-card>
+    <c-child-component counter={valueofInput} ></c-child-component>
+
+</template>

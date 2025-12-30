@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Google Search">
+        <div class="slds-m-around_medium">
+            <lightning-input label="Search Query" value={query} onchange={handleInputChange}></lightning-input>
+            <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+        </div>
+        <template if:true={results}>
+            <ul>
+                <template for:each={results} for:item="result">
+                    <li key={result.link}>
+                        <h3>{result.title}</h3>
+                        <a href={result.link} target="_blank">{result.link}</a>
+                        <p>{result.snippet}</p>
+                    </li>
+                </template>
+            </ul>
+        </template>
+        <template if:true={error}>
+            <p>Error: {error}</p>
+        </template>
+    </lightning-card>
+</template>

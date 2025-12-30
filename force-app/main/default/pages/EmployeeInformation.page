@@ -1,0 +1,38 @@
+<apex:page controller="WrapperClassForVisualPage">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:pageBlockTable value="{!wrapperString}" var="wrap">
+                    <apex:column headerValue="Employee Code">
+                        {!wrap.empName}
+                    </apex:column>
+                    
+                    <apex:column headerValue="Employee Email">
+                        {!wrap.empEmail}
+                    </apex:column>
+                    
+                    <apex:column headerValue="Employee Phone">
+                        {!wrap.empPhone}
+                    </apex:column>
+                    <apex:column headerValue="Total Leave">
+                        {!wrap.totalLeave}
+                    </apex:column>
+                    
+                    <apex:column headerValue="Remaining Leave">
+                        {!wrap.remainingLeaves}
+                    </apex:column>
+                    
+                    <apex:column headerValue="No of Project">
+                        {!wrap.NoOfProject}
+                    </apex:column>
+                    
+                    <apex:column headerValue="Total Timesheet Hour">
+                        {!wrap.TotalTimesheetHour}
+                    </apex:column>
+                    
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

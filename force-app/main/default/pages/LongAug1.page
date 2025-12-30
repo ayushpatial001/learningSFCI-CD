@@ -1,0 +1,59 @@
+<apex:page controller="longAug1">
+    <apex:form >
+        <!-- Employee Information Section -->
+        <apex:pageBlock title="Employee Information">
+            <apex:pageBlockSection columns="2">
+                
+                <apex:outputText value="{!emp.Name}" />
+                
+                <apex:outputText value="{!emp.Joining_Date__c}"/>
+
+                <apex:outputText value="{!emp.Employee_Code__c}" />
+               
+                <apex:outputText value="{!emp.Primary_Number__c}" />
+               
+                <apex:outputText value="{!emp.Email_Address__c}" />
+                
+                <apex:outputText value="{!emp.Date_of_Birth__c}"/>
+               
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <!-- Personal Information Section -->
+        <apex:pageBlock title="Personal Information">
+            <apex:pageBlockSection columns="2">
+                <apex:outputField value="{!emp.Father_s_Name__c}" />
+                
+                <apex:outputField value="{!emp.Mother_s_Name__c}" />
+               
+                <apex:outputField value="{!emp.Gender__c}" />
+               
+                <apex:outputField value="{!emp.Emergency_Contact_Number__c}" />
+                   
+                <apex:outputField value="{!emp.Pan_Card_Number__c}" />
+               
+                <apex:outputField value="{!emp.Aadhar_Number__c}" />
+                
+                <apex:outputField value="{!emp.Name_of_the_Certification__c	}" />
+                
+                <apex:outputText value="{!emp.Certification__c}" />
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <!-- Bank Information Section -->
+        <apex:pageBlock title="Bank Information">
+            <apex:pageBlockSection columns="2">
+                
+                <apex:outputText value="{!emp.Bank_Account_Number__c}" />
+               
+                <apex:outputText value="{!emp.Bank_Name__c}" />
+               
+                <apex:outputText value="{!emp.IFSC_Code__c}" />
+               
+                <apex:outputText value="{!emp.Bank_Branch_Name__c}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,90 @@
+<template>
+    <lightning-card>
+        <div style="margin-left: 5px; margin-right: 5px;">
+            <lightning-tabset variant="scoped">
+                <lightning-tab label="Post">
+                  
+                </lightning-tab>
+                <lightning-tab label="Poll">
+                    
+                </lightning-tab>
+                <lightning-tab label="Question">
+                    <span style="color:red; margin-right: 10px;">*</span>
+                    <span style="margin-right: 15px;">=</span>
+                    <span >Required</span>
+                    <div style="margin-top: 20px; margin-bottom: 20px;">
+                        <lightning-input placeholder="What would you like to know" onchange={questionHandler} label="*Question (Enter up to 255 characters)"></lightning-input>
+                    </div>
+                    <div>
+                        <lightning-input-rich-text value={sssas} label="Details" placeholder="If you have more to say, add details here..."></lightning-input-rich-text>  
+                    </div>
+                    <div class="slds-p-top_small">
+                         <span class="slds-text-align_left" style="margin-right: 330px;">
+                            <lightning-button-icon icon-name="utility:attach"   variant="bare" alternative-text="Add user" class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+                         </span>
+                        <span class="slds-text-align_right">
+                            <lightning-button variant="brand" label="Ask"></lightning-button> 
+                        </span>    
+                    </div>                 
+                 </lightning-tab>
+            </lightning-tabset> 
+        </div>
+        <div class="slds-feed">
+            <ul class="slds-feed__list">
+            <li class="slds-feed__item">
+            <article class="slds-post">
+            <header class="slds-post__header slds-media">
+            <div class="slds-media__figure">
+            <a href="#" class="slds-avatar slds-avatar_circle slds-avatar_large">
+                <lightning-button-icon icon-name="utility:user"   variant="bare" alternative-text="Add user" class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+            </a>
+            </div>
+            <div class="slds-media__body">
+            <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+            <p>
+            <a href="#" title="Jason Rodgers">Jason Rogers</a> —
+            <a href="#" title="Design Systems">Design Systems</a>
+            </p>
+            <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small" aria-haspopup="true" title="More Options">
+            <svg class="slds-button__icon" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+            </svg>
+            <span class="slds-assistive-text">More Options</span>
+            </button>
+            </div>
+            <p class="slds-text-body_small">
+            <a href="#" title="Click for single-item view of this post" class="slds-text-link_reset">5 days Ago</a>
+            </p>
+            </div>
+            </header>
+            <div class="slds-post__content slds-text-longform">
+            <p>Hey there! Here&#x27;s the latest demo presentation
+            <a href="#" title="Jenna Davis">@Jenna Davis</a>, let me know if there are any changes. I&#x27;ve updated slides 3-8 and slides 16-18 slides with new product shots.</p>
+            </div>
+            <footer class="slds-post__footer">
+            <ul class="slds-post__footer-actions-list slds-list_horizontal">
+            <li class="slds-col slds-item slds-m-right_medium">
+            <lightning-button-icon icon-name="utility:like" variant="bare" alternative-text="Add user" class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+            <Span>Like</Span>
+            </li>
+            <li class="slds-col slds-item slds-m-right_medium">
+            <button title="Comment on this item" class="slds-button_reset slds-post__footer-action">
+            <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle" aria-hidden="true">
+            
+            </svg> Comment</button>
+            </li>
+            <li class="slds-col slds-item slds-m-right_medium">
+            <button title="Share this item" class="slds-button_reset slds-post__footer-action">
+            <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle" aria-hidden="true">
+           
+            </svg> Share</button>
+            </li>
+            </ul>
+            </footer>
+            </article>
+            </li>
+            </ul>
+            </div>
+        
+    </lightning-card>   
+</template>

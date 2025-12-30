@@ -1,0 +1,16 @@
+<template>
+    <p>Hello this is working fine as shit</p>
+     <lightning-button
+        label={emailButtonLabel}
+        onclick={handleToggleEmail}>
+    </lightning-button>
+    <template for:each={users} for:item="user">
+        <div key={user.id}>
+            <p>Name: {user.name}</p>
+            <template if:true={showEmail}>
+                <p><strong>Email:</strong> {user.email}</p>
+            </template>
+        </div>
+    </template>
+    <button onclick={checkresult}>check whats coming</button>
+</template>

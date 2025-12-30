@@ -1,0 +1,13 @@
+<template>
+    <lightning-card  >
+        <lightning-input label="Movie Name" onchange={onChangeHandler} ></lightning-input>
+        <lightning-button label="Send"  onclick={sendData}></lightning-button>    
+    </lightning-card>
+    <template if:true={visibility}>  
+                <p>{movieName}</p>
+                <img  src={imgURL} height="70px"  width="70px" />
+    
+    </template>
+   
+    
+</template>

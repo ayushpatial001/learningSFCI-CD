@@ -1,0 +1,9 @@
+<apex:page standardController="Account" extensions="GreetingForNewAccount">
+    <p>{!greeting}</p>
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+            <apex:outputField value="{!Account.Name}"></apex:outputField>    
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+
+</apex:page>

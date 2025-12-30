@@ -1,0 +1,12 @@
+<template>
+    <template if:true={data}>
+        <lightning-card  class="slds-text-align_center" title="Product Detail">
+            <template for:each={data} for:item="foodRecord">
+                
+              <p key={foodRecord.Id}>Product Name --<b>{foodRecord.Name}</b></p>
+              <p  key={foodRecord.Id}><b>Description</b></p>
+              <p key={foodRecord.Id}>{foodRecord.Description}</p>
+              </template>
+        </lightning-card>
+    </template>
+</template>

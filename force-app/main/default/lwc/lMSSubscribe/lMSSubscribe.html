@@ -1,0 +1,20 @@
+<template>
+    <template if:true={data}>
+    <lightning-card title="Case Details" icon-name="standard:account" >
+       <template for:each={data} for:item="food">
+
+        <lightning-accordion active-section-name="B" key={food.Id}>
+            <lightning-accordion-section name="A" label="Accordion Title A"
+                >This is the content area for section A {food.Id}</lightning-accordion-section
+            >
+            <lightning-accordion-section name="B" label="Accordion Title B"
+                >This is the content area for section B {food.Priority}</lightning-accordion-section
+            >
+            <lightning-accordion-section name="C" label="Accordion Title C"
+                >This is the content area for section C {food.Email__C}</lightning-accordion-section
+            >
+        </lightning-accordion>
+       </template>
+    </lightning-card>
+    </template>
+</template>

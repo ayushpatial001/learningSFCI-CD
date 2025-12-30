@@ -1,0 +1,19 @@
+<apex:page standardController="Leave__c"  recordSetVar="leaves">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:inputField value="{!Leave__c.Leave_Status__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockTable value="{!Selected}" var="name">
+                <apex:column value="{!name.Name}"/>
+            </apex:pageBlockTable>
+            <div style="text-align : center">
+                <apex:commandButton action="{!Save}" value="Save"></apex:commandButton>
+                <apex:commandButton action="{!Cancel}" value="Cancel"></apex:commandButton> 
+            </div>
+        </apex:pageBlock>
+        
+    </apex:form>
+    
+    
+</apex:page>

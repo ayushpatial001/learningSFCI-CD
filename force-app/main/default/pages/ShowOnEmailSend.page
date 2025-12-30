@@ -1,0 +1,3 @@
+<apex:page standardController="Monthly_Salary__c" extensions="SendMonthlySlipOnEmail" action="{!sendEmail}">
+    <h1>Email Send Suucesfully</h1>
+</apex:page>

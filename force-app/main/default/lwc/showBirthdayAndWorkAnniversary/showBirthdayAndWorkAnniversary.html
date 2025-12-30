@@ -1,0 +1,24 @@
+<template>
+    <lightning-card>
+        <div class="slds-box">
+            <h1><b>WorkAnniversary</b></h1>
+            <template lwc:if={data1}>
+                <template for:each={data1} for:item="empRecord">
+                    <p key={empRecord.Id}>Happy WorkAnniversary -- <b>{empRecord.Name}</b></p>
+                </template>
+                </template>
+           </div>  
+           <div class="slds-box">
+            <p><b>Today Birthday</b></p>
+           
+            <template lwc:if={data2}>
+                <template for:each={data2} for:item="empRecord">
+                    <img  style="max-width:50%;max-height:50%; height: 50px; width: 50px; margin-right: 10px"  src={birthdayIcon} key={empRecord.Id} />
+                    <span key={empRecord.Id}>Happy BirthDay -- <b>{empRecord.Name}</b></span>
+                   
+                </template>
+                </template>
+           </div> 
+    </lightning-card>
+ 
+</template>

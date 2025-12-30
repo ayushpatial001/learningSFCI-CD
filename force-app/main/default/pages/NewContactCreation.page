@@ -1,0 +1,33 @@
+<apex:page standardController="Contact" extensions="ReferToListView">
+    <apex:form >
+        <apex:pageBlock title="Contact Details">
+            <apex:PageBlockSection >
+                <apex:inputField value="{!Contact.FirstName}"></apex:inputField>
+                <apex:inputField value="{!Contact.LastName}"></apex:inputField>
+                <apex:inputField value="{!Contact.Phone}"></apex:inputField>
+                <apex:inputField value="{!Contact.Email}"></apex:inputField>
+            </apex:PageBlockSection>
+            <apex:pageBlockSection title="Address Information">
+                <apex:inputField value="{!Contact.MailingStreet}"></apex:inputField>
+                 <apex:inputField value="{!Contact.MailingCity}"></apex:inputField>
+                 <apex:inputField value="{!Contact.MailingState}"></apex:inputField>
+                 <apex:inputField value="{!Contact.MailingPostalCode}"></apex:inputField>
+                 <apex:inputField value="{!Contact.MailingCountry}"></apex:inputField>
+                
+            </apex:pageBlockSection>
+            <div style="text-align : center">
+                    <apex:commandButton action="{!makeFunction}" value="Save"></apex:commandButton>
+                    <apex:commandButton action="{!Cancel}" value="Cancel"></apex:commandButton> 
+            </div>
+            
+        </apex:pageBlock>
+        
+         
+    </apex:form>
+    <script>
+    function onPage(){
+        Window.location.href = '/lightning/o/Contact';
+        }
+    </script>
+    
+</apex:page>

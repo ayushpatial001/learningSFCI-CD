@@ -1,0 +1,20 @@
+<template>
+    <template if:true={fetch}>
+        <lightning-card title="Menu-detail">
+                 <div class="slds-grid slds-wrap">
+                   <template for:each={fetch} for:item="foodRecord">
+                          <div class="slds-size_1-of-4  slds-text-align_center maindiv" key={foodRecord.Id} >
+                            <lightning-card title={foodRecord.Name} >
+                                <p>Name =<b>{foodRecord.Name}</b></p>
+                                <p>Price = <b>{foodRecord.Price__c}</b></p>
+                                <p>Quantity = <b>{foodRecord.quantity}</b></p>
+                            </lightning-card>  
+                          </div>
+                    </template>
+    
+               </div>   
+        </lightning-card>
+    </template>
+    
+
+    </template>

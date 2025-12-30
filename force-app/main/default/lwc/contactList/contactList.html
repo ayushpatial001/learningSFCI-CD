@@ -1,0 +1,13 @@
+<template>
+    <template if:true={errors}>
+        <p>{errors}</p>
+    </template>
+    <template if:false={errors}>
+        <lightning-datatable
+        key-field="id"
+        data={data}
+        columns={columns}
+></lightning-datatable>
+    </template>
+   
+</template>

@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Employee Records">
+        <lightning-datatable
+            key-field="Id"
+            data={employees}
+            columns={columns}
+            onsave={handleSave}
+            draft-values={draftValues}
+            hide-checkbox-column
+            onrowaction={handleRowAction}
+        >
+        </lightning-datatable>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-controls">
+            <lightning-button label="Previous" onclick={handlePrevious} disabled={disablePrevious}></lightning-button>
+            <lightning-button label="Next" onclick={handleNext} disabled={disableNext}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

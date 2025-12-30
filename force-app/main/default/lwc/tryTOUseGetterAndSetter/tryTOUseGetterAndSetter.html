@@ -1,0 +1,16 @@
+<template>
+ <lightning-card  title="Animal">
+      <lightning-button label="Upload Age" slot="actions" onclick={onclickHandler}></lightning-button>
+        <p class="slds-p-around_medium">
+               <lightning-input label="Enter Cat age"  onchange={handleInputData}></lightning-input>
+               </br>
+        Animal Name : {name}
+        </br>
+        Animal age : {age}
+        </br>
+        
+
+        </p>
+        
+ </lightning-card>
+</template>

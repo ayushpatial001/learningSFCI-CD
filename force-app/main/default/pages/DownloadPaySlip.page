@@ -1,0 +1,124 @@
+<apex:page standardController="Monthly_Salary__c" renderAs="pdf" standardStylesheets="false" applyHtmlTag="false" showHeader="false" extensions="DownlodPaySlip" action="{!downloadPdf}">
+    <apex:form style="border:1px solid black">
+        <apex:pageBlock >
+            <center>
+                <h1 style="font-size:20px; width:auto; border-bottom:1px solid black; margin:0px; padding:10px;">
+                    Salary Pay Slip
+                </h1>
+            </center>
+            <apex:pageBlockSection >
+                
+                
+                <apex:image url="{!$Resource.TMCLogo}" width="50" height="50" style="margin-left : 90px; margin-top: 30px; margin-bottom: 30px" />
+                <span style="font-size:30px ;color: #0096FF; margin-left: 70px">
+                    Techmatrix
+                </span >
+                <span style="font-size:30px;color: #00A36C;">
+                    Consulting
+                </span>
+                
+                
+                
+                
+            </apex:pageBlockSection>
+            <section>
+                <table style="width:100%;padding:0px;border-collapse:collapse;" border="1">
+                    <tr style="padding:10px;">
+                        <td><strong><apex:outputLabel value="Salary Id : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Name}"/></td>
+                        <td><strong><apex:outputLabel value="Salary Month Name : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Monthly_Salary__c.Salary_Month_Name__c}"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong><apex:outputLabel value="Employee Name : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Employee_Name__c}"/></td>
+                        <td><strong><apex:outputLabel value="Employee CTC Id : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Employee_CTC__r.Name}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Employee Code : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Employee_Name__r.Employee_Code__c}"/></td>
+                        <td><strong><apex:outputLabel value="Joining Date : "></apex:outputLabel></strong></td>
+                        <td colspan="3"><apex:outputField value=" {!Monthly_Salary__c.Employee_Name__r.Joining_Date__c}"/></td> 
+                    </tr>  
+                </table>
+            </section>
+            <section>
+                <center>
+                    <h1 style="font-size:20px">
+                        Salary Details With Allowance
+                    </h1>
+                </center>
+                <table style="width:100%;padding:0px;border-collapse:collapse;" border="1">
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Basic Salary : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Basic_Salary__c}"/></td>
+                        <td><strong><apex:outputLabel value="HRA : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.HRA__c}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Internet Allowance : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Internet_Allowance__c}"/></td>
+                        <td><strong><apex:outputLabel value="Travel Allowance : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Monthly_Salary__c.Travel_Allowance__c}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Medical Allowance : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Medical_Allowance__c}"/></td>
+                        <td><strong><apex:outputLabel value="Special Allowance : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Monthly_Salary__c.Special_Allowance__c}"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong><apex:outputLabel value="Amount Total(Gross Salary) : "></apex:outputLabel></strong></td>
+                        <td colspan="3"><apex:outputField value="{!Monthly_Salary__c.Gross_Salary__c}"/></td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <center>
+                    <h1 style="font-size:20px">
+                        Salary Deductions
+                    </h1>
+                </center>
+                <table style="width:100%;padding:0px;border-collapse:collapse;" border="1">
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Employer EPF : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Employer_EPF__c}"/></td>
+                        <td><strong><apex:outputLabel value="Employee EPF : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Monthly_Salary__c.Employee_EPF__c}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="ESIC : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Monthly_Salary__c.ESIC__c}"/></td>
+                        <td><strong><apex:outputLabel value="Other Deductions : "></apex:outputLabel></strong></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><strong><apex:outputLabel value="Professional Tax : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Profesional_Tax__c}"/></td>
+                        <td><strong><apex:outputLabel value="Total Deduction Amount : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Monthly_Salary__c.Total_Deduction__c}"/></td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <center>
+                    <h1 style="font-size:20px">
+                        Amount Paid
+                    </h1>
+                    <table style="width:100%;padding:0px;border-collapse:collapse;" border="1">
+                        <tr style="margin:10px;">
+                            <td><strong><apex:outputLabel value="Net Payable Amount : "></apex:outputLabel></strong></td>
+                            <td>4000</td>
+                            <td><strong><apex:outputLabel value="Remark : "></apex:outputLabel></strong></td>
+                            <td colspan="3"><apex:outputLabel value="Salary Slip Generated Successfully"></apex:outputLabel></td>
+                        </tr>
+                    </table>
+                    <h4>
+                        Techmatrix Consulting
+                    </h4>
+                </center>
+            </section>
+        </apex:pageBlock>
+    </apex:form>   
+</apex:page>

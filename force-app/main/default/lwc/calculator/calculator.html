@@ -1,0 +1,29 @@
+<template>  
+    <div class="slds-box slds_shade" style="width: 60;">  
+     <lightning-input value={firstNumber} type="number" step="any" name="input2" label="Enter First Value" onchange={handleNumberOeChange} style="width: 50%;"></lightning-input>  
+     <lightning-input value={secondNumber} type="number" step="any" name="input2" label="Enter Second Value" onchange={handleNumberTwoChange} style="width: 50%;"></lightning-input>  
+   </div>  
+   <div class="slds-box slds-theme_alert-texture">  
+     <b>Output value is : </b>  
+      <P>{resultValue}</p>  
+   </div>  
+    <div class="slds-grid slds-grid_vertical">
+        <div class="slds-col">
+            <lightning-button label="ClearAll" onclick={clearAll} ></lightning-button>
+            <lightning-button label="Addition" onclick={addition}> </lightning-button> 
+            <lightning-button label="Subtraction" onclick={subtraction}> </lightning-button> 
+            <lightning-button label="Multiplication" onclick={multification}> </lightning-button>   
+          </div>
+          <div class="slds-col">          
+               <lightning-button label="Divison" onclick={division}> </lightning-button> 
+              <lightning-button label="Random Number" onclick={random}> </lightning-button>  
+              <lightning-button label="Find Sin" onclick={sinMethod}> </lightning-button>
+          </div>
+          <div class="slds-col">
+           <lightning-button label="Sin 30" onclick={sin30Method}> </lightning-button>
+           <lightning-button label="cos 30" onclick={cos30Method}> </lightning-button>
+           <lightning-button label="tan 30" onclick={tan30Method}> </lightning-button>
+
+          </div>
+    </div>
+ </template>

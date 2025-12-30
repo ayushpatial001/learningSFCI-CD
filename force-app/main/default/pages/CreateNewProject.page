@@ -1,0 +1,21 @@
+<apex:page standardController="Project__c">
+    <apex:form >
+        <apex:pageBlock title="New Project Information">
+            <apex:pageBlockSection id="project-details" title="Project Details">
+                <apex:inputField value="{!Project__c.Name}"/>
+                <apex:inputField value="{!Project__c.Account__c}"/>
+                <apex:inputField value="{!Project__c.Project_Start_Date__c}"/>
+                <apex:inputField value="{!Project__c.Project_End_Date__c}"/>
+                <apex:inputField value="{!Project__c.Status__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection id="project-guides" title="Project Guides">
+                <apex:inputField value="{!Project__c.Employee_Name__c}"/>
+                <apex:inputField value="{!Project__c.Project_Manager__c}"/>
+            </apex:pageBlockSection>
+            <center id="buttons">
+                <apex:commandButton action="{!save}" value="Save"/>
+                <apex:commandButton action="{!cancel}" value="Cancel"/>
+            </center>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

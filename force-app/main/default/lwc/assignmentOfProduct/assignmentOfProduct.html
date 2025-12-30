@@ -1,0 +1,55 @@
+<template>
+    <template if:true={productToDisplay}>
+       
+        <lightning-card  title="Choose Currency">
+            <div slot="actions">
+                <lightning-button-icon size="large" icon-name="standard:webcart" variant="destructive"
+                    alternative-text="My Cart" title="cart" onclick={handleCart}></lightning-button-icon>
+                
+            </div>
+            <div style="margin-left: 250px;
+                        width: 161px;">
+                <lightning-combobox
+                name="progress"
+                placeholder="Choose Currency"
+                options={options}
+                onchange={handleChange} ></lightning-combobox>
+             
+            </div>
+        </lightning-card>
+                <div class="slds-grid slds-wrap">
+                    <template for:each={productToDisplay} for:item="foodRecord">
+                          <div class="slds-size_1-of-3  slds-text-align_center " key={foodRecord.Id} style=" margin: 30px; " >
+                            <lightning-card title={foodRecord.name}>  
+                                <lightning-formatted-text value={foodRecord.Name} onclick={handleClick}></lightning-formatted-text>
+                                <img src={foodRecord.imageUrl} height="100"  />
+                                <p >Price = <b>{foodRecord.price}</b></p>
+                                <p style="color: white;">Quantity = {ObjectLength}</p>                  
+                                    <lightning-button  data-id={foodRecord.productId}  variant="base" label="-" data-inline="true" onclick={Remove} style="margin-right: 15px" ></lightning-button>
+                                    <span><b>{foodRecord.quantity}</b></span>
+                                    <lightning-button data-id={foodRecord.productId}  variant="base" label="+" data-inline="true" onclick={Add}  style="margin-left: 15px" ></lightning-button>
+                                    <div>
+                                        <lightning-button  data-id={foodRecord.productId}  disabled={foodRecord.disabled} variant="brand" label="Add to cart" title="Primary action" onclick={AddtoCart} class="slds-m-left_x-small " ></lightning-button>  
+                                        <lightning-button  data-id={foodRecord.productId}   variant="brand" label="Description" title="Primary action" onclick={handleClick} class="slds-m-left_x-small " ></lightning-button>
+                                    </div>    
+                            </lightning-card>                         
+                          </div>
+                    </template>
+               </div>
+               <div>
+            </div>
+            <div style=" margin-top: 130px">
+                <lightning-button variant="destructive" label="Previous" onclick={handlePrevious}
+                   disabled={handleDisablePrevious} style=" margin-left: 190px; margin-right: 50px; margin-top: 130px"></lightning-button>
+              <lightning-button variant="Brand" label="Next" onclick={handleNext} disabled={handleDisableNext}
+              ></lightning-button>
+       </div>
+       
+        
+
+    </template>
+    <template if:true={showDetailButton}>
+        <c-child-product-second detail={storedObjectData}></c-child-product-second>
+    </template>
+      
+</template>

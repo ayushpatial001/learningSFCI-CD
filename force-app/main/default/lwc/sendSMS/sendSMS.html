@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Send SMS Message">
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+            <lightning-input label="Enter Phone Number" onchange={getValue} placeholder="+91 - Format" ></lightning-input>
+            <lightning-input label="Enter Message" onchange={getMessage} palceholder="Eneter Mesage" placeholder="Write Short Message" style="margin-bottom: 15px; margin-top: 10px"></lightning-input>
+            <lightning-button label="Submit" onclick={SendToMessage} ></lightning-button>
+        </div>
+        
+       
+    </lightning-card>
+   
+    
+</template>

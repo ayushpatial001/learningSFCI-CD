@@ -1,0 +1,16 @@
+<apex:page standardController="Monthly_Salary__c" >
+    <apex:form >
+        <apex:pageBlock title="Choose Employee">
+        <apex:pageBlockSection >
+            <apex:inputField value="{!Monthly_Salary__c.Employee_Name__c}"></apex:inputField>
+        </apex:pageBlockSection>
+            <div style="text-align: center;">
+                 <apex:commandButton action="{!Save}" value="Save"></apex:commandButton>
+                <span>      </span>
+                  <apex:commandButton action="{!Cancel}" value="Cancel"></apex:commandButton>
+            </div>
+           
+    </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

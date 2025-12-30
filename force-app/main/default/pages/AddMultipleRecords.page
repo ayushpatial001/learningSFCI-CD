@@ -1,0 +1,36 @@
+<apex:page controller="CreateMultipleRecordsForEmployee">
+    <apex:form >
+        <apex:pageBlock title="Creating Employee Record">
+        <apex:pageMessages ></apex:pageMessages>
+            <div>
+                 <apex:pageBlockTable value="{!empRecord}" var="emp">
+            <apex:column headerValue="Employee Name">
+                <apex:inputField value="{!emp.Name}"></apex:inputField>
+            </apex:column>
+            <apex:column headerValue="Joining Date">
+                <apex:inputField value="{!emp.Joining_Date__c}"></apex:inputField>
+            </apex:column>
+            <apex:column headerValue="Date Of Birth">
+                <apex:inputField value="{!emp.Date_of_Birth__c}" required="true"></apex:inputField>
+            </apex:column>
+            <apex:column headerValue="Email Address">
+                <apex:inputField value="{!emp.Email_Address__c}" required="true"></apex:inputField>
+            </apex:column>
+            <apex:column headerValue="Primary Contact">
+                <apex:inputField value="{!emp.Primary_Number__c}"></apex:inputField>            
+            </apex:column>
+        </apex:pageBlockTable>
+            </div>
+       
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Add Row" action="{!addRecord}"></apex:commandButton>
+            <apex:commandButton value="Save" action="{!saveAccount}"></apex:commandButton>
+          </apex:pageBlockButtons>
+
+    </apex:pageBlock>
+
+
+    </apex:form>
+    
+
+</apex:page>

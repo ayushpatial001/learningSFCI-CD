@@ -1,0 +1,20 @@
+<apex:page controller="StoreDataFromLWCComponentAndShowInVF" renderAs="pdf" standardStylesheets="false" applyHtmlTag="false" showHeader="false"    >
+    <apex:form >
+       <apex:pageBlock >
+           <apex:pageBlockSection >
+                    <section>
+                <table style="width:100%;padding:0px;border-collapse:collapse;" border="1">
+                    <tr style="padding:10px;">
+                        <td><strong><apex:outputLabel value="Name : "></apex:outputLabel></strong></td>
+                        <td><apex:outputText value="{!NameD}" /></td>
+                      
+                    </tr>
+                        </table>
+               </section>
+           </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+    
+    
+</apex:page>

@@ -1,0 +1,42 @@
+<template>
+        <lightning-card title="Employees Records" icon-name="custom:custom63">
+            <lightning-input type="search"
+                             class="slds-p-around_x-small"
+                             onchange={handleSearchChange}
+                             label="Search Employee Name"
+                             value={serchKey}
+                             ></lightning-input>
+            <template if:true={searchKeyModal}>
+                <div class="slds-m-around_medium">
+                    <template if:true={employees.data}>
+                       <lightning-datatable
+                            key-field="Id"
+                            data={employees.data}
+                            columns={columns} 
+                            onrowaction={handleRowAction}
+                           >
+                        </lightning-datatable>
+                    </template>
+                    <br/>
+                    <c-paginator  onprevious={previousHandler2} onnext={nextHandler2} onselected={changeHandler2} onfirstpage={firstpagehandler} onlastpage={lastpagehandler}></c-paginator>
+                </div>
+            </template>
+            <template if:false={searchKeyModal}>
+                <div class="slds-m-around_medium">
+                    <template if:true={data}>
+                       <lightning-datatable
+                            key-field="Id"
+                            data={data}
+                            columns={columns} 
+                           >
+                        </lightning-datatable>
+                    </template>
+                    <br/>
+                    <c-paginator  onprevious={previousHandler2} onnext={nextHandler2} onselected={changeHandler2} onfirstpage={firstpagehandler} onlastpage={lastpagehandler}></c-paginator>
+                </div>
+            </template>
+
+           
+        </lightning-card>
+    
+</template>

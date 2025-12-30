@@ -1,0 +1,37 @@
+<template>
+    <template if:true={visibledatacomponent}>
+     <lightning-card>
+        <div >
+            <template for:each={data} for:item="obj1">
+                <div class="slds-p-around_medium" key={obj1.Id}>
+                    <div class="slds-box slds-box_x-small">
+                        <lightning-formatted-rich-text data-propertyid={obj1.Id} value={obj1.Image__c} onclick={getParticularPropertyData}></lightning-formatted-rich-text>
+                        <p>{obj1.Name}</p>
+                        <p>{obj1.Address__c}</p>
+                        <span>Price - {obj1.Price__c}</span><br>
+                        <span>Total Rooms - {obj1.Total_Rooms__c}</span>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+
+    </template>
+    <template   if:false={visibledatacomponent}>
+         <lightning-card>
+                <p class="slds-align_absolute-center">Please Select Any Property  check its Details</p>
+                <div class="slds-form-element slds-has-error">
+                    <label class="slds-form-element__label" for="text-input-id-48">
+                    <abbr class="slds-required" title="required">* </abbr>Input Label</label>
+                <div class="slds-form-element__control">
+                     <input type="text" class="nameCmp" placeholder="Placeholder text…" />
+                </div>
+                <div class="slds-form-element__help" id="error-message-id-49">Enter a value.</div>
+                 </div>
+                <lightning-button label="Click"  onclick={handleOnClick}></lightning-button>
+         </lightning-card>
+       
+
+    </template>
+    
+</template>

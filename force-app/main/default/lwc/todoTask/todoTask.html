@@ -1,0 +1,28 @@
+<template>
+  <lightning-card title="TODAY WORK">
+   <div class="slds-form-element">
+  <label class="slds-form-element__label" for="text-input-id-47">
+    <abbr class="slds-required" title="required">* </abbr>Date</label>
+  <div class="slds-form-element__control">
+    <input type="text" id="text-input-id-47" placeholder="Placeholder text…" required="" class="slds-input" value={date} readonly/>
+  </div>
+</div>
+<h1>Task</h1>
+<div class="slds-box slds-box_small">
+  <lightning-input type="text" id="text-input-id-48" placeholder="Title"   onchange={onChangetitle}></lightning-input>
+  <lightning-input type="text" id="text-input-id-49" placeholder="Body"   onchange={onChangebody} ></lightning-input>
+</div>
+<button class="slds-button slds-button_brand" onclick={onClickHandle}>Create</button>
+  </lightning-card>
+ <template if:true={isThereanyTask}>
+    <template for:each={storeTodayTask} for:item="obj">
+       <div key={obj.id}>
+           <button  data-id={obj.id} class="slds-button slds-button_success" onclick={onSuccess}>Done</button>
+           <button  data-id={obj.id} class="slds-button slds-button_text-destructive" onclick={onRemove}>Remove</button>
+            <p>{obj.date}</p>
+            <p>{obj.title}</p>
+            <p>{obj.body}</p>
+        </div>
+    </template>
+</template>
+</template>

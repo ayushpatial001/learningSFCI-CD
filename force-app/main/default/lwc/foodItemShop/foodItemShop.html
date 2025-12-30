@@ -1,0 +1,47 @@
+<template>
+    <template if:false={showDetailButton}>
+        <lightning-card title="Filters" class="slds-text-align_center">
+            <div style= "width: 300px; margin-right: 200px">
+                <lightning-combobox label="Category" options={category} value={status} onchange={handleSelection}
+            class="slds-m-bottom_small"></lightning-combobox>
+            </div>
+           
+              <div style= "width: 300px; margin-right: 200px">
+                <lightning-combobox label="Sub Category" options={subOption} value={status1} onchange={handleSelection1}
+                class="slds-m-bottom_small"></lightning-combobox> 
+              </div>
+        </lightning-card>
+    
+                <div style="margin: 40px">
+                    <button style="border: none;" onclick={showDetailButton1}>
+                        <img src={imgOfCart} />
+                      </button>
+                      <p><b>{ObjectLength}</b></p>
+                </div>
+               
+                <template if:true={data}>
+                    <div class="slds-grid slds-wrap">
+                        <template for:each={data} for:item="foodRecord">
+                              <div class="slds-size_1-of-4  slds-text-align_center maindiv" key={foodRecord.Id} >
+                                <lightning-card title={foodRecord.Name} >
+                                    <div>
+                                        <lightning-formatted-rich-text class="imgdiv" value={foodRecord.Item_Image__c} ></lightning-formatted-rich-text>
+                                    </div>
+                                    <p>Price = <b>{foodRecord.Price__c}</b></p>
+                                    <p>Quantity = <b>{foodRecord.quantity}</b></p>
+                                    <lightning-button data-id={foodRecord.Id} variant="brand" label="Add to Cart" title="Primary action" onclick={handleClick} class="slds-m-left_x-small" ></lightning-button>
+                                    <lightning-button data-id={foodRecord.Id}  variant="destructive" label="Remove" title="Primary action" onclick={RemoveItem} class="slds-m-left_x-small" ></lightning-button>
+                                </lightning-card>                         
+                              </div>
+                        </template>
+                   </div>
+                </template>
+    </template>
+   
+            <template if:true={showDetailButton}>
+                <c-child-food onbacktomenu={NavigateToParentComp}
+                              onsendata={sendata}
+                              detail={storedObjectData}></c-child-food>
+            </template>
+         
+</template>

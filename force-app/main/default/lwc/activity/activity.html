@@ -1,0 +1,103 @@
+<template>
+    <lightning-card>
+
+        <span style="margin-right: 10px; margin-left: 10px;">
+
+            <lightning-icon icon-name="standard:task" alternative-text="Event" title="Event"
+                onclick={handleClick}></lightning-icon>
+            <lightning-button-menu alternative-text="Show menu" menu-alignment="auto">
+                <lightning-menu-item value="MenuItemOne" label="Menu Item One"></lightning-menu-item>
+                
+            </lightning-button-menu>
+        </span>
+
+        <span style="margin-right: 10px;">
+            <lightning-icon icon-name="standard:event" alternative-text="Event" title="Event"
+                onclick={handleClick}></lightning-icon>
+
+            <lightning-button-menu alternative-text="Show menu" menu-alignment="auto">
+                <lightning-menu-item value="MenuItemOne" label="Menu Item One"></lightning-menu-item>
+                <lightning-menu-item value="MenuItemTwo" label="Menu Item Two" disabled></lightning-menu-item>
+                <lightning-menu-item value="MenuItemThree" label="Menu Item Three" disabled></lightning-menu-item>
+                <lightning-menu-item value="MenuItemFour" label="Menu Item Four"></lightning-menu-item>
+            </lightning-button-menu>
+
+        </span>
+
+        <span style="margin-right: 10px;">
+
+            <lightning-icon icon-name="standard:log_a_call" alternative-text="Event" title="Event"
+                onclick={handleClick}></lightning-icon>
+
+            <lightning-button-menu alternative-text="Show menu" menu-alignment="auto">
+                <lightning-menu-item value="MenuItemOne" label="Menu Item One"></lightning-menu-item>
+                <lightning-menu-item value="MenuItemTwo" label="Menu Item Two" disabled></lightning-menu-item>
+                <lightning-menu-item value="MenuItemThree" label="Menu Item Three" disabled></lightning-menu-item>
+                <lightning-menu-item value="MenuItemFour" label="Menu Item Four"></lightning-menu-item>
+            </lightning-button-menu>
+
+        </span>
+
+        <div style="margin-left: 10px; margin-top: 10px">
+
+            <lightning-icon icon-name="standard:email" alternative-text="Event" title="Event"
+                onclick={handleClick}></lightning-icon>
+            <lightning-button-menu alternative-text="Show menu" menu-alignment="auto">
+                <lightning-menu-item value="MenuItemOne" label="Menu Item One"></lightning-menu-item>
+                <lightning-menu-item value="MenuItemTwo" label="Menu Item Two" disabled></lightning-menu-item>
+                <lightning-menu-item value="MenuItemThree" label="Menu Item Three" disabled></lightning-menu-item>
+                <lightning-menu-item value="MenuItemFour" label="Menu Item Four"></lightning-menu-item>
+            </lightning-button-menu>
+
+        </div>
+
+        <lightning-accordion class="example-accordion" active-section-name="B">
+            <lightning-accordion-section name="A" label="Upcoming & overdue">
+                <lightning-button-menu slot="actions" alternative-text="Show menu" icon-size="x-small"
+                    menu-alignment="right">
+                    <lightning-menu-item value="New" label="Menu Item One"></lightning-menu-item>
+                    <lightning-menu-item value="Edit" label="Menu Item Two"></lightning-menu-item>
+                </lightning-button-menu>
+                <p>This is the content area for section A.</p>
+                
+                <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="B" label="September 2024">
+                <p>This is the content area for section B.</p>
+                <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </lightning-card>
+    <template if:true={showDifferentThings}>
+        <div class="slds-utility-panel slds-grid slds-grid_vertical slds-is-open" role="dialog"
+            aria-labelledby="panel-heading-01">
+            <div class="slds-utility-panel__header slds-grid slds-shrink-none">
+                <div class="slds-media slds-media_center">
+                    <div class="slds-media__figure slds-m-right_x-small">
+                        <span class="slds-icon_container">
+                            <svg class="slds-icon slds-icon_small slds-icon-text-default" aria-hidden="true">
+                                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#call"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 id="panel-heading-01">Task</h2>
+                    </div>
+                </div>
+                <div class="slds-col_bump-left slds-shrink-none">
+                    <lightning-icon icon-name="utility:minimize_window" title="Close Panel"
+                        onclick={HidePanel}></lightning-icon>
+                    <svg class="slds-button__icon" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#minimize_window"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Close Panel</span>
+                </div>
+            </div>
+            <div class="slds-utility-panel__body">
+                <lightning-record-form object-api-name={objectApiName} columns="1"
+                    layout-type="Full"></lightning-record-form>
+            </div>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,9 @@
+<apex:page extensions="ImportCSVFile" standardController="Time_Entry__c" >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:inputFile value="{!FileContent}" fileName="Filee"/>
+            <apex:commandButton value="Upload" action="{!ReadFile}"/>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

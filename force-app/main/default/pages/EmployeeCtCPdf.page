@@ -1,0 +1,100 @@
+<apex:page standardController="Employee_CTC__c" renderAs="pdf" standardStylesheets="false" applyHtmlTag="false" showHeader="false">
+    <apex:form >
+        <apex:pageBlock >
+           <apex:pageBlockSection >
+                <apex:image url="{!$Resource.TMCLogo}" width="50" height="50" style="margin-left : 90px; margin-top: 30px; margin-bottom: 30px" />
+                <span style="font-size:30px ;color: #0096FF; margin-left: 70px">
+                    Techmatrix
+                </span >
+                <span style="font-size:30px;color: #00A36C;">
+                    Consulting
+                </span>
+            </apex:pageBlockSection>
+            <section>
+                <table style="width:100%;padding:10px;" border="1">
+                    <tr style="padding:10px;">
+                        <td><strong><apex:outputLabel value="Employee CTC Id : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Name}"/></td>
+                        <td><strong><apex:outputLabel value="Employee Name : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Employee_Name__c}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Employee Code : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Employee_Name__r.Employee_Code__c}"/></td>
+                        <td><strong><apex:outputLabel value="Joining Date : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Employee_Name__r.Joining_Date__c}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="CTC : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Current_CTC__c}"/></td>
+                        <td><strong><apex:outputLabel value="Gratuity : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Gratuity__c}"/></td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <center>
+                    <h1 style="font-size:20px">
+                        Salary Details With Allowance
+                    </h1>
+                </center>
+                <table style="width:100%;padding:10px;" border="1">
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Basic Salary : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Basic_Salary__c}"/></td>
+                        <td><strong><apex:outputLabel value="HRA : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.HRA__c}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Internet Allowance : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Internet_Allowance__c}"/></td>
+                        <td><strong><apex:outputLabel value="Travel Allowance : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Employee_CTC__c.Travel_Allowance__c}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Medical Allowance : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Medical_Allowance__c}"/></td>
+                        <td><strong><apex:outputLabel value="Special Allowance : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Employee_CTC__c.Special_Allowance__c}"/></td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <center>
+                    <h1 style="font-size:20px">
+                        Salary Deductions
+                    </h1>
+                </center>
+                <table style="width:100%;" border="1">
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Employer EPF : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Employer_EPF__c}"/></td>
+                        <td><strong><apex:outputLabel value="Employer EPF : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Employee_CTC__c.Employer_EPF1__c}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="Employee EPF : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value=" {!Employee_CTC__c.Employee_EPF__c}"/></td>
+                        <td><strong><apex:outputLabel value="Employee EPF : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Employee_CTC__c.Employer_EPF1__c}"/></td>
+                    </tr>
+                    <tr style="margin:10px;">
+                        <td><strong><apex:outputLabel value="ESIC : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Employee_CTC__c.ESIC__c}"/></td>
+                        <td><strong><apex:outputLabel value="ESIC : "></apex:outputLabel></strong></td>
+                        <td><apex:outputField value="{!Employee_CTC__c.ESIC1__c}"/></td>
+                    </tr>
+                    <tr>
+                    <td><strong><apex:outputLabel value="Professional Tax : "></apex:outputLabel></strong></td>
+                        <td colspan="3"><apex:outputField value=" {!Employee_CTC__c.Professional_Tax__c}"/></td>
+                    </tr>
+                </table>
+                <center>
+                <h4>
+                      Tech Matrix Consulting
+                    </h4>
+                </center>
+            </section>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

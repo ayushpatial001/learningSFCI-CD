@@ -1,0 +1,5 @@
+<apex:page renderAs="pdf" showHeader="false" applyHtmlTag="false" standardStylesheets="false">
+    <apex:variable value="{!$CurrentPage.parameters.name}" var="paramName"/>
+    <h1>Name: </h1>
+    <p>{!$CurrentPage.parameters.name}</p>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page standardController="Course__c">
+    <apex:form >
+        <apex:pageBlock title="New Course Information">
+            <apex:pageBlockSection id="course-details" title="Course Details">
+                <apex:inputField value="{!Course__c.Name}"/>
+                <apex:inputField value="{!Course__c.Course_Code__c}"/>
+                <apex:inputField value="{!Course__c.Start_Date__c}"/>
+                <apex:inputField value="{!Course__c.Duration_In_Months__c}"/>
+            </apex:pageBlockSection>
+            <center>
+                <apex:commandButton action="{!save}" value="Save"/>
+                <apex:commandButton action="{!cancel}" value="Cancel"/>
+            </center>
+   </apex:pageBlock>
+    </apex:form>
+</apex:page>

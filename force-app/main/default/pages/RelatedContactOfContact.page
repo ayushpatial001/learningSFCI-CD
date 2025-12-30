@@ -1,0 +1,23 @@
+<apex:page standardController="Account"  tabstyle="account" sidebar="false">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:pageBlockTable value="{!Account.Contacts}" var="acc">
+                    <apex:column value="{!acc.Name}"></apex:column>
+                    <apex:column headerValue="What his Email Address">
+                        <apex:inputField value="{!acc.Email}"></apex:inputField>
+                    </apex:column>
+                    <apex:column headerValue="What his Phone Number">
+                        <apex:inputField value="{!acc.Phone}"></apex:inputField>
+                    </apex:column>
+                </apex:pageBlockTable>  
+            </apex:pageBlockSection>
+            <div style="text-align: center;">
+               <apex:commandButton value="Save Records" action="{!quickSave}"></apex:commandButton>            
+            </div>
+            
+        </apex:pageBlock>
+        
+    </apex:form>
+    
+</apex:page>

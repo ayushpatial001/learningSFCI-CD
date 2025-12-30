@@ -1,0 +1,12 @@
+<template>
+    <div class="slds-box">
+    <lightning-card title = "Employee Records" >
+            <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}>
+        </lightning-datatable>
+        <p slot="footer">Total Employee Record -> {totalEmployeeRecord}</p>
+        </lightning-card>
+    </div>
+</template>
