@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout source code
+      # 1️⃣ Checkout Code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Install Node.js (required for Salesforce CLI)
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -27,7 +27,7 @@ jobs:
       - name: Install Salesforce CLI
         run: npm install -g @salesforce/cli
 
-      # 4️⃣ Verify Salesforce CLI installation
+      # 4️⃣ Verify Salesforce CLI
       - name: Check Salesforce CLI version
         run: sf --version
 
@@ -42,15 +42,76 @@ jobs:
             --instance-url https://test.salesforce.com \
             --set-default
 
-      # 6️⃣ Verify org connection
-      - name: Display Org Info
-        run: sf org display --target-org ${{ secrets.SF_USERNAME }}
+      # 6️⃣ Read PR description or commit message
+      - name: Read PR / Commit Message
+        id: pr_message
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            MESSAGE="${{ github.event.pull_request.body }}"
+          else
+            MESSAGE="$(git log -1 --pretty=%B)"
+          fi
 
-      # 7️⃣ Run Apex Tests
-      - name: Run Apex Tests
-        run: sf apex run test --test-level RunLocalTests --wait 30
+          echo "PR_MESSAGE<<EOF" >> $GITHUB_OUTPUT
+          echo "$MESSAGE" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
-      # 8️⃣ (Optional) Deploy source to org
-      # Uncomment if you want deployment in CI
-      # - name: Deploy Source
-      #   run: sf project deploy start --source-dir force-app --wait 30
+      # 7️⃣ Detect Apex changes
+      - name: Detect Apex changes
+        id: apex_check
+        run: |
+          git fetch origin main
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+
+          echo "$CHANGED_FILES"
+
+          if echo "$CHANGED_FILES" | grep -E 'force-app/main/default/(classes|triggers)/'; then
+            echo "apex_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "apex_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      # 8️⃣ Parse user test instruction
+      - name: Parse test instruction
+        id: test_parser
+        run: |
+          MESSAGE="${{ steps.pr_message.outputs.PR_MESSAGE }}"
+
+          if echo "$MESSAGE" | grep -iq "noTestRun"; then
+            echo "mode=skip" >> $GITHUB_OUTPUT
+          elif echo "$MESSAGE" | grep -iq "tests:"; then
+            TESTS=$(echo "$MESSAGE" | sed -n 's/.*tests:\(.*\)/\1/p' | tr -d ' ')
+            echo "mode=custom" >> $GITHUB_OUTPUT
+            echo "tests=$TESTS" >> $GITHUB_OUTPUT
+          else
+            echo "mode=missing" >> $GITHUB_OUTPUT
+          fi
+
+      # 9️⃣ Enforce rules (FAIL if Apex changed & no test info)
+      - name: Validate test instruction
+        if: steps.apex_check.outputs.apex_changed == 'true' && steps.test_parser.outputs.mode == 'missing'
+        run: |
+          echo "❌ Apex code changed but no test instruction provided."
+          echo "Please add one of the following to PR description or commit message:"
+          echo "1️⃣ noTestRun"
+          echo "2️⃣ tests: MyTestClass1,MyTestClass2"
+          exit 1
+
+      # 🔟 Run specific Apex tests
+      - name: Run specified Apex tests
+        if: steps.test_parser.outputs.mode == 'custom'
+        run: |
+          echo "Running tests: ${{ steps.test_parser.outputs.tests }}"
+          sf apex run test \
+            --tests "${{ steps.test_parser.outputs.tests }}" \
+            --wait 30
+
+      # 1️⃣1️⃣ Skip tests explicitly
+      - name: Skip Apex tests
+        if: steps.test_parser.outputs.mode == 'skip'
+        run: echo "⚠️ Apex tests skipped as per user instruction (noTestRun)"
+
+      # 1️⃣2️⃣ No Apex change → no tests
+      - name: No Apex changes detected
+        if: steps.apex_check.outputs.apex_changed == 'false'
+        run: echo "✅ No Apex changes detected. Tests not required."
