@@ -6,18 +6,32 @@ on:
       - main
 
 jobs:
-  hello:
+  salesforce-ci:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2️⃣ Install Salesforce CLI
       - name: Install Salesforce CLI
         run: npm install -g @salesforce/cli
 
+      # 3️⃣ Verify CLI installation
       - name: Check Salesforce CLI version
         run: sf --version
 
-      - name: Say hello
-        run: echo "Salesforce CLI installed successfully"
+      # 4️⃣ Authenticate to Salesforce (JWT)
+      - name: Authenticate to Salesforce
+        run: |
+          echo "${{ secrets.SF_JWT_KEY }}" > server.key
+          sf org login jwt \
+            --client-id ${{ secrets.SF_CLIENT_ID }} \
+            --jwt-key-file server.key \
+            --username ${{ secrets.SF_USERNAME }} \
+            --instance-url https://test.salesforce.com
+
+      # 5️⃣ Run Apex Tests
+      - name: Run Apex Tests
+        run: sf apex test run --test-level RunLocalTests --wait 10 --result-format human
