@@ -1,3 +1,7 @@
+/*
+ 11jan - Add comment  history to check developers change histories.
+
+*/
 public class SendSMS {
      
     @AuraEnabled(cacheable=true)
@@ -41,9 +45,6 @@ public class SendSMS {
         }else{
             System.debug('Error Occurs');
         }
-
-
-
        
 
     }
