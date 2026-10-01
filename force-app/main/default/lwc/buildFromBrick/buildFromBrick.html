@@ -1,0 +1,11 @@
+<template>
+   <h>This is the starting of the build from brick</h>
+   <lightning-input label="Search Last Name" onchange={handleChange}></lightning-input>
+   <lightning-button label = 'Refresh the data'   onclick={handleOnButtonChange}></lightning-button>
+   <template for:each={getData.data} for:item="acc">
+        <p key={acc.Id}>{acc.Name}</p>
+    </template>
+<template if:true={getData.error}>
+    <p>Something went wrong</p>
+</template>
+</template>
